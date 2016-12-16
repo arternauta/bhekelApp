@@ -14,9 +14,23 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import Svg, {Circle} from 'react-native-svg'
+
 const detalleElemento = require ('/bhekelApp/components/detalleElementoView')
 const styles = require ('../styles')
 const REQUEST_URL = 'http://ranking.bhekel.com/bhekelApp/oficinas.json'
+const moment = require('moment')
+
+require('moment/locale/pt')
+moment.locale('es')
+
+var dia = moment().format("DD");
+var mes = moment().format("MMMM")
+
+var primerDia = moment("20161020", "YYYYMMDD")
+
+
+
 
 class dashboardView extends Component{
 constructor(props){
@@ -54,20 +68,45 @@ onElementoPressed(elemento){
 }
 //
 renderElemento(elemento){
+  var urlImage = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/SantaCruzRank.png'
+    urlImage += '?random_number='+new Date().getTime()
   return(
     <TouchableOpacity onPress={()=>this.onElementoPressed(elemento)}>
-        <Image source={{uri:'http://ranking.bhekel.com/bhekelApp/images/'+elemento.foto+'.jpg'}} style={styles.elemento}>
-            <Text>{elemento.Puesto}</Text>
-            <Text>{elemento.Nombre}</Text>
+        <Image key={elemento.foto} source={{uri:urlImage}} style={styles.elemento}>
+          <View style={styles.elementoContainer}>
+            <Text style={styles.pais}>{elemento.Pais}</Text>
+            <Text style={styles.nombresPuesto}>{elemento.Nombre}</Text>
+            <Text style={styles.puesto}>{elemento.Puesto}</Text>
+          </View>
         </Image>
     </TouchableOpacity>
 
     )
 }
 render(){
+  var urlHeader = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/header.jpg'
+    urlHeader += '?random_number='+new Date().getTime()
+
     return(
       <View style={styles.container}>
-          <ListView
+          <Image
+          source={{uri:urlHeader}}
+          style={styles.headerEscritorios}
+          >
+
+          <Circle
+              cx="50"
+              cy="50"
+              r="45"
+              stroke="blue"
+              strokeWidth="2.5"
+              fill="green"
+          />
+            <Text style={styles.headerTexto}>{dia}</Text>
+            <Text style={styles.headerTexto}>{mes}</Text>
+
+          </Image>
+          <ListView style={styles.elementos}
             dataSource={this.state.dataSource}
             renderRow={this.renderElemento.bind(this)}
             initialListSize={1}

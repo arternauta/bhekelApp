@@ -15,12 +15,63 @@ var styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems:'stretch'
   },
+  headerEscritorios:{
+    flex:2,
+    justifyContent:'center',
+    borderBottomWidth:3,
+    borderColor:'white',
+    resizeMode: 'stretch',
+    width: null,
+    height: null
+  },
+  headerTexto:{
+    textAlign:'center',
+    color:'white',
+    fontSize:30
+  },
+  circulo:{
+
+    backgroundColor:'red',
+    borderRadius:50/2,
+
+  },
+  elementos:{
+    flex:6
+  },
   elemento:{
-    flex:1,
+    flex:5,
     backgroundColor:'pink',
-    height:150,
+    height:100,
     opacity:10
   },
+  elementoContainer:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    borderBottomWidth:1,
+    borderColor:'white'
+  },
+  puesto:{
+    flex:15,
+    color:'white',
+    fontSize:50,
+    textAlign:'center',
+    fontWeight:"600",
+    textShadowColor:'black',
+    textShadowRadius:4,
+    textShadowOffset:{width:3,height:3}
+  },
+  pais:{
+    flex:8,
+    color:'white',
+    textAlign:'center'
+  },
+  nombresPuesto:{
+    flex:25,
+    textAlign:'center',
+    color:'white',
+  },
+
   chart: {
       marginRight: 20,
       height: 200,
