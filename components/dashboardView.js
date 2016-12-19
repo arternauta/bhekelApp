@@ -11,10 +11,13 @@ import {
   ScrollView,
   Image,
   TouchableHighlight,
+  ToolbarAndroid,
   TouchableOpacity
 } from 'react-native';
 
 import Svg, {Circle} from 'react-native-svg'
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const detalleElemento = require ('/bhekelApp/components/detalleElementoView')
 const styles = require ('../styles')
@@ -29,9 +32,6 @@ var mes = moment().format("MMMM")
 
 var primerDia = moment("20161020", "YYYYMMDD")
 
-
-
-
 class dashboardView extends Component{
 constructor(props){
   super(props)
@@ -44,74 +44,87 @@ constructor(props){
 }
 
 componentDidMount(){
-  this.fetchData()
-}
-
-fetchData(){
-  fetch(REQUEST_URL)
-  .then((response)=>response.json())
-  .then((responseData)=>{
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(responseData),
-      loaded:true
-    })
-  })
-}
-
-onElementoPressed(elemento){
-
-  this.props.navigator.push({
-    name: 'Detalles',
-    passProps: {elemento: elemento}
-  })
-
+   this.fetchData()
 }
 //
-renderElemento(elemento){
-  var urlImage = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/SantaCruzRank.png'
-    urlImage += '?random_number='+new Date().getTime()
-  return(
-    <TouchableOpacity onPress={()=>this.onElementoPressed(elemento)}>
-        <Image key={elemento.foto} source={{uri:urlImage}} style={styles.elemento}>
-          <View style={styles.elementoContainer}>
-            <Text style={styles.pais}>{elemento.Pais}</Text>
-            <Text style={styles.nombresPuesto}>{elemento.Nombre}</Text>
-            <Text style={styles.puesto}>{elemento.Puesto}</Text>
-          </View>
-        </Image>
-    </TouchableOpacity>
+fetchData(){
+   fetch(REQUEST_URL)
+   .then((response)=>response.json())
+   .then((responseData)=>{
+     this.setState({
+       dataSource: this.state.dataSource.cloneWithRows(responseData),
+       loaded:true
+     })
+   })
+ }
+//
+ onElementoPressed(elemento){
 
-    )
-}
+   this.props.navigator.push({
+     name: 'Detalles',
+     passProps: {elemento: elemento}
+   })
+
+ }
+// //
+ renderElemento(elemento){
+   var urlImage = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/SantaCruzRank.png'
+     urlImage += '?random_number='+new Date().getTime()
+   return(
+     <TouchableOpacity onPress={()=>this.onElementoPressed(elemento)}>
+           <View style={styles.elementoContainer}>
+             <Text style={styles.pais}>{elemento.Pais}</Text>
+             <Text style={styles.nombresPuesto}>{elemento.Nombre}</Text>
+             <Text>{elemento.Puesto}</Text>
+           </View>
+     </TouchableOpacity>
+
+     )
+ }
 render(){
-  var urlHeader = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/header.jpg'
-    urlHeader += '?random_number='+new Date().getTime()
-
+  // var urlHeader = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/header.jpg'
+  //   urlHeader += '?random_number='+new Date().getTime()
     return(
-      <View style={styles.container}>
-          <Image
-          source={{uri:urlHeader}}
-          style={styles.headerEscritorios}
-          >
+    <View style={styles.container}>
+      <View style={styles.headerWrap}>
+        <View elevation={3} style={styles.medioTop}>
+        <View style={styles.menuTop}></View>
+        <View style={styles.logoWrap}>
+          <Image source={{uri:'http://www.fordesigner.com/imguploads/Image/cjbc/zcool/png20080526/1211811605.png'}} style={styles.stretch}/>
+          <View style={styles.bhekel}>
+          <Text style={styles.fontBhekel}>
+            Bhekel
+          </Text>
+          <Text style={styles.frase}>
+            Frase
+            <Icon name="heart"/>
+          </Text>
+        </View>
+        </View>
+        </View>
+        <View style={styles.descripcionWrap}>
+          <View style={styles.puntosWrap}>
+          <Icon name="star" size={25} />
+          <Text style={{'fontWeight':'bold'}}>45871</Text>
+          <Text>PUNTOS</Text>
 
-          <Circle
-              cx="50"
-              cy="50"
-              r="45"
-              stroke="blue"
-              strokeWidth="2.5"
-              fill="green"
+          </View>
+          <Text style={styles.puesto}>01</Text>
+          <View style={styles.datos}>
+          <Text>Fatima Hermosa</Text>
+          <Text>Karen Alvarez</Text>
+          <Text style={{'fontWeight':'bold'}}>Bolivia</Text>
+          </View>
+        </View>
+      </View>
+      <View style={styles.rankingWrap}>
+        <ListView style={styles.elementos}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderElemento.bind(this)}
+          initialListSize={1}
+          renderToHardwareTextureAndroid={true}
           />
-            <Text style={styles.headerTexto}>{dia}</Text>
-            <Text style={styles.headerTexto}>{mes}</Text>
-
-          </Image>
-          <ListView style={styles.elementos}
-            dataSource={this.state.dataSource}
-            renderRow={this.renderElemento.bind(this)}
-            initialListSize={1}
-            renderToHardwareTextureAndroid={true}
-            />
+      </View>
     </View>
     )
   }

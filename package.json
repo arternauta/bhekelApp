@@ -12,7 +12,9 @@
     "react": "15.3.2",
     "react-native": "0.35.0",
     "react-native-chart": "^1.0.8-beta",
-    "react-native-svg": "^4.3.0"
+    "react-native-material-ui": "^1.5.0",
+    "react-native-svg": "^4.3.0",
+    "react-native-vector-icons": "^3.0.0"
   },
   "jest": {
     "preset": "jest-react-native"

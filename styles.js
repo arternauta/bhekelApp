@@ -10,10 +10,70 @@ const constants = {
 var styles = StyleSheet.create({
   container: {
       flex: 1,
-      backgroundColor: 'blue',
+      backgroundColor: '#eaeaea',
       flexDirection:'column',
       justifyContent: 'center',
-      alignItems:'stretch'
+      alignItems:'stretch',
+  },
+  headerWrap:{
+  flex:1,
+  backgroundColor:'white'
+  },
+  rankingWrap:{
+    flex:1,
+    backgroundColor:'white'
+  },
+  logo:{
+    flex:1,
+  },
+  bhekelWrap:{
+    flex:3
+  },
+  menuTop:{
+    margin:10,
+    padding:20,
+    backgroundColor:'#44b39d'
+  },
+  logoWrap:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:'flex-start',
+    justifyContent:'center',
+  },
+  medioTop:{
+    backgroundColor:'#cecece',
+    padding:15,
+  },
+  bhekel:{
+    flex:3,
+  },
+  fontBhekel:{
+    fontWeight:'bold',
+    fontSize:60,
+  },
+  frase:{
+    marginRight:10,
+    padding:5,
+    backgroundColor:'#44b39d',
+  },
+  descripcionWrap:{
+    flex:1,
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'center',
+    //backgroundColor:'#8aa3ff',
+    padding:10
+  },
+  puntosWrap:{
+    flexDirection:'column',
+    alignItems:'flex-end'
+  },
+  puesto:{
+    color:'#bf4a67',
+    fontSize:80
+  },
+  datos:{
+    flexDirection:'column'
   },
   headerEscritorios:{
     flex:2,
@@ -24,64 +84,29 @@ var styles = StyleSheet.create({
     width: null,
     height: null
   },
-  headerTexto:{
-    textAlign:'center',
-    color:'white',
-    fontSize:30
-  },
   circulo:{
 
     backgroundColor:'red',
     borderRadius:50/2,
 
   },
-  elementos:{
-    flex:6
-  },
-  elemento:{
-    flex:5,
-    backgroundColor:'pink',
-    height:100,
-    opacity:10
-  },
   elementoContainer:{
-    flex:1,
     flexDirection:'row',
     alignItems:'center',
     borderBottomWidth:1,
-    borderColor:'white'
+    borderColor:'white',
+    backgroundColor:'#bf4a67',
+    marginTop:10,
+    marginLeft:10,
+    marginRight:10,
+    padding:25,
   },
-  puesto:{
-    flex:15,
-    color:'white',
-    fontSize:50,
-    textAlign:'center',
-    fontWeight:"600",
-    textShadowColor:'black',
-    textShadowRadius:4,
-    textShadowOffset:{width:3,height:3}
-  },
-  pais:{
-    flex:8,
-    color:'white',
-    textAlign:'center'
-  },
-  nombresPuesto:{
-    flex:25,
-    textAlign:'center',
-    color:'white',
-  },
-
   chart: {
       marginRight: 20,
       height: 200,
   },
   foto:{
     flex:3,
-  },
-  cuerpo:{
-    flex:7,
-    backgroundColor:'pink'
   },
   centrado:{
     flex:1,
@@ -151,7 +176,11 @@ title1: {
    fontWeight: '400',
    lineHeight: 16,
    letterSpacing: 0.066
- }
+ },
+ stretch: {
+    width: 100,
+    height: 100
+  }
 
 })
 module.exports = styles
