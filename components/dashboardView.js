@@ -71,11 +71,13 @@ fetchData(){
    var urlImage = 'http://ranking.bhekel.com/bhekelApp/RankingListaOficinas/SantaCruzRank.png'
      urlImage += '?random_number='+new Date().getTime()
    return(
-     <TouchableOpacity onPress={()=>this.onElementoPressed(elemento)}>
+     <TouchableOpacity>
            <View style={styles.elementoContainer}>
-             <Text style={styles.pais}>{elemento.Pais}</Text>
-             <Text style={styles.nombresPuesto}>{elemento.Nombre}</Text>
-             <Text>{elemento.Puesto}</Text>
+             <View style={styles.puestoWrap}>
+               <Text style={styles.corazon}>{elemento.Puesto}</Text>
+             </View>
+             <Text style={styles.pais}>{elemento.Escritorio}</Text>
+             <Icon style={styles.icono} name="bar-chart" onPress={()=>this.onElementoPressed(elemento)}/>
            </View>
      </TouchableOpacity>
 
@@ -88,18 +90,30 @@ render(){
     <View style={styles.container}>
       <View style={styles.headerWrap}>
         <View elevation={3} style={styles.medioTop}>
-        <View style={styles.menuTop}></View>
+          <View style={styles.talkBubble}>
+            <View style={styles.talkBubbleSquare}>
+              <Icon style={styles.corazon} name="bars"/>
+              <Text style={styles.corazon}>Ranking Oficinas</Text>
+              <Icon name="home" style={styles.corazon}/>
+            </View>
+            <View style={styles.talkBubbleTriangle} />
+          </View>
         <View style={styles.logoWrap}>
-          <Image source={{uri:'http://www.fordesigner.com/imguploads/Image/cjbc/zcool/png20080526/1211811605.png'}} style={styles.stretch}/>
+          <View style={styles.stretch}>
+            <Image source={{uri:'http://ranking.bhekel.com/bhekelApp/images/logo.png'}} style={styles.logo}/>
+          </View>
+
           <View style={styles.bhekel}>
           <Text style={styles.fontBhekel}>
             Bhekel
           </Text>
-          <Text style={styles.frase}>
-            Frase
-            <Icon name="heart"/>
-          </Text>
-        </View>
+          <View style={styles.botonFrase}>
+              <Text style={styles.frase}>Facebook.com/Bhekel</Text>
+              <View style={styles.corazonWrap}>
+              <Icon style={styles.corazon} name="heart"/>
+              </View>
+          </View>
+            </View>
         </View>
         </View>
         <View style={styles.descripcionWrap}>

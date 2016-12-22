@@ -32,6 +32,7 @@ var styles = StyleSheet.create({
   menuTop:{
     margin:10,
     padding:20,
+    borderRadius:5,
     backgroundColor:'#44b39d'
   },
   logoWrap:{
@@ -41,7 +42,7 @@ var styles = StyleSheet.create({
     justifyContent:'center',
   },
   medioTop:{
-    backgroundColor:'#cecece',
+    backgroundColor:'#2a8472',
     padding:15,
   },
   bhekel:{
@@ -50,11 +51,33 @@ var styles = StyleSheet.create({
   fontBhekel:{
     fontWeight:'bold',
     fontSize:60,
+    color:'white',
+  },
+  botonFrase:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'flex-end',
+    marginRight:10,
+    width:200,
+    borderRadius:5,
+    alignItems:'center',
+    backgroundColor:'#44b39d',
+    backgroundColor:'rgba(0,0,0,1)'
+  },
+  corazonWrap:{
+    flex:1,
+    padding:5,
+    backgroundColor:'#bf4a67',
+    borderRadius:5
+  },
+  corazon:{
+    fontSize:20,
+    color:'white',
   },
   frase:{
-    marginRight:10,
-    padding:5,
-    backgroundColor:'#44b39d',
+    flex:8,
+    marginLeft:10,
+    color:'white',
   },
   descripcionWrap:{
     flex:1,
@@ -93,13 +116,24 @@ var styles = StyleSheet.create({
   elementoContainer:{
     flexDirection:'row',
     alignItems:'center',
-    borderBottomWidth:1,
-    borderColor:'white',
+    justifyContent:'space-between',
+    backgroundColor:'#17927a',
+    margin:5,
+    borderRadius:5,
+  },
+  puestoWrap:{
     backgroundColor:'#bf4a67',
-    marginTop:10,
-    marginLeft:10,
-    marginRight:10,
-    padding:25,
+    padding:10,
+    borderRadius:5
+  },
+  icono:{
+    color:'white',
+    fontSize:20,
+    marginRight:5,
+  },
+  pais:{
+    color:'white',
+    fontSize:20,
   },
   chart: {
       marginRight: 20,
@@ -178,9 +212,42 @@ title1: {
    letterSpacing: 0.066
  },
  stretch: {
-    width: 100,
-    height: 100
-  }
+   flex:2,
+   justifyContent:'center',
+   alignItems:'center',
+  },
+logo:{
+  height:135,
+  width:117
+},
+  talkBubble: {
+  backgroundColor: 'transparent'
+},
+talkBubbleSquare: {
+  width: 330,
+  height: 40,
+  backgroundColor: '#44b39d',
+  flexDirection:'row',
+  justifyContent:'space-between',
+  alignItems:'center',
+  padding:10,
+  borderRadius:5,
+},
+talkBubbleTriangle: {
+  left: 150,
+  top: -7,
+  width: 0,
+  height: 0,
+  borderTopColor: 'transparent',
+  borderTopWidth: 13,
+  borderRightWidth: 13,
+  borderRightColor: '#44b39d',
+  borderBottomWidth: 13,
+  borderBottomColor: 'transparent',
+  transform: [
+      {rotate: '-90deg'}
+    ]
+}
 
 })
 module.exports = styles

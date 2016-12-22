@@ -17,6 +17,7 @@ const Login = require('./components/loginView')
 const Dashboard = require('./components/dashboardView')
 const Tenis = require('./components/tenisView')
 const Videos = require('./components/videosView')
+const sideMenu = require('./components/sideMenu')
 
 //Create component
 class BhekelApp extends Component{
@@ -43,6 +44,10 @@ class BhekelApp extends Component{
         return <Videos {...route.props} navigator={navigator} route={route}/>
         break
       }
+      case 'sideMenu':{
+         return <sideMenu {...route.props} navigator={navigator} route={route}/>
+         break
+       }
 
     }
 
@@ -51,7 +56,7 @@ class BhekelApp extends Component{
 render(){
   return(
     <Navigator
-      initialRoute={{name:'Dashboard'}}
+      initialRoute={{name:'sideMenu'}}
       renderScene={this.renderScene }
       >
     </Navigator>
